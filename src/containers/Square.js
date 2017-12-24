@@ -62,9 +62,10 @@ class Square extends Component {
     // console.log(nextProps.newPawnPos);
     var arr =[];
     this.state.currnetPawnPos.map((pos, index)=>{
-      if((pos-16) === nextProps.newPawnPos){
+      if((pos-16) === nextProps.newPawnPos || (pos - 8) ===nextProps.newPawnPos){
         arr.push(nextProps.newPawnPos);
-      }else{
+      }
+      else{
         arr.push(pos);
       }
     })
