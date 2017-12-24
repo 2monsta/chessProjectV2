@@ -16,7 +16,9 @@ class Square extends Component {
         width: '12.5%',
         height:'100px',
         display:'inline-block'
-      }
+      },
+      number: 48
+
     }
   }
 
@@ -50,17 +52,55 @@ class Square extends Component {
   render() {
     // console.log(this.props.num);
     const number = this.props.num;
-    for(let i =48; i<56; i++){
-      if(number === i){
-        return (
-          // this needs to be a pawn class
+    switch(number){
+      case this.state.number:
+        return( 
           <div style={this.state.styles}>
             <span><Pawn/></span>
           </div>
         )
-      }
-    }
-    switch(number){
+      case 49:
+        return( 
+          <div style={this.state.styles}>
+            <span><Pawn/></span>
+          </div>
+        )
+      case 50:
+        return( 
+          <div style={this.state.styles}>
+            <span><Pawn/></span>
+          </div>
+        )
+        case 51:
+        return( 
+          <div style={this.state.styles}>
+            <span><Pawn/></span>
+          </div>
+        )
+      case 52:
+        return( 
+          <div style={this.state.styles}>
+            <span><Pawn/></span>
+          </div>
+        )
+      case 53:
+        return( 
+          <div style={this.state.styles}>
+            <span><Pawn/></span>
+          </div>
+        )
+      case 54:
+        return( 
+          <div style={this.state.styles}>
+            <span><Pawn/></span>
+          </div>
+        )
+      case 55:
+        return( 
+          <div style={this.state.styles}>
+            <span><Pawn/></span>
+          </div>
+        )
       case 56:
         return( 
           <div style={this.state.styles}>
