@@ -10,7 +10,6 @@ class Pawn extends Component {
   }
   
   handleMove(){
-    // console.log(this.props.pawnNum);
     this.props.move(this.props.pawnNum);
   }
   render() {

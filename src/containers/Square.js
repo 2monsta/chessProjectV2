@@ -5,7 +5,7 @@ import King from './King';
 import Knight from './Knight';
 import Bishop from './Bishop';
 import Pawn from './Pawn';
-
+import {connect} from 'react-redux';
 
 class Square extends Component {
   constructor() {
@@ -17,11 +17,20 @@ class Square extends Component {
         height:'100px',
         display:'inline-block'
       },
-      number: 48
+      currnetPawnPos:[
+         48,
+        49,
+        50,
+        51,
+       52,
+        53,
+        54,
+        55
+      ]
 
     }
   }
-
+  //TODO: update state depending on the number will cause a re render and move the
   componentDidMount() {
     const number = this.props.num;
     const darkSquares = [
@@ -49,56 +58,81 @@ class Square extends Component {
     }  
   }
   
+  componentWillReceiveProps(nextProps) {
+    // console.log(nextProps.newPawnPos);
+    var arr =[];
+    this.state.currnetPawnPos.map((pos, index)=>{
+      if((pos-16) === nextProps.newPawnPos){
+        arr.push(nextProps.newPawnPos);
+      }else{
+        arr.push(pos);
+      }
+    })
+    console.log(arr);
+    this.setState({
+      currnetPawnPos: arr
+    })
+  }
+  
+
   render() {
     // console.log(this.props.num);
     const number = this.props.num;
+    const pawnOne = this.state.currnetPawnPos[0];
+    const pawnTwo = this.state.currnetPawnPos[1];
+    const pawnThree = this.state.currnetPawnPos[2];
+    const pawnFour = this.state.currnetPawnPos[3];
+    const pawnFive = this.state.currnetPawnPos[4];
+    const pawnSix = this.state.currnetPawnPos[5];
+    const pawnSeven = this.state.currnetPawnPos[6];
+    const pawnEight = this.state.currnetPawnPos[7];
     switch(number){
-      case this.state.number:
+      case pawnOne:
         return( 
           <div style={this.state.styles}>
-            <span><Pawn/></span>
+            <span><Pawn pawnNum={pawnOne}/></span>
           </div>
         )
-      case 49:
+      case pawnTwo:
         return( 
           <div style={this.state.styles}>
-            <span><Pawn/></span>
+            <span><Pawn pawnNum={pawnTwo}/></span>
           </div>
         )
-      case 50:
+      case pawnThree:
         return( 
           <div style={this.state.styles}>
-            <span><Pawn/></span>
+            <span><Pawn pawnNum={pawnThree}/></span>
           </div>
         )
-        case 51:
+        case pawnFour:
         return( 
           <div style={this.state.styles}>
-            <span><Pawn/></span>
+            <span><Pawn pawnNum={pawnFour}/></span>
           </div>
         )
-      case 52:
+      case pawnFive:
         return( 
           <div style={this.state.styles}>
-            <span><Pawn/></span>
+            <span><Pawn pawnNum={pawnFive}/></span>
           </div>
         )
-      case 53:
+      case pawnSix:
         return( 
           <div style={this.state.styles}>
-            <span><Pawn/></span>
+            <span><Pawn pawnNum={pawnSix}/></span>
           </div>
         )
-      case 54:
+      case pawnSeven:
         return( 
           <div style={this.state.styles}>
-            <span><Pawn/></span>
+            <span><Pawn pawnNum={pawnSeven}/></span>
           </div>
         )
-      case 55:
+      case pawnEight:
         return( 
           <div style={this.state.styles}>
-            <span><Pawn/></span>
+            <span><Pawn pawnNum={pawnEight}/></span>
           </div>
         )
       case 56:
@@ -164,4 +198,11 @@ class Square extends Component {
   }
 }
 
-export default Square;
+function mapStateToProps(state){
+  return {
+    newPawnPos: state.pawn
+  }
+}
+
+// export default Square;
+export default connect(mapStateToProps)(Square);
