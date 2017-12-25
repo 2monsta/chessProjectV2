@@ -17,18 +17,10 @@ class Square extends Component {
         height:'100px',
         display:'inline-block'
       },
-      currnetPawnPos:[
-         48,
-        49,
-        50,
-        51,
-       52,
-        53,
-        54,
-        55
-      ]
-
+      currnetPawnPos:[48, 49,50, 51,52, 53, 54, 55],
+      currentRookPos: [56, 63]
     }
+    this.handleClick = this.handleClick.bind(this);
   }
   //TODO: update state depending on the number will cause a re render and move the
   componentDidMount() {
@@ -69,12 +61,28 @@ class Square extends Component {
         arr.push(pos);
       }
     })
-    console.log(arr);
+    this.state.currentRookPos.map((pos, index)=>{
+
+    })
+
+    // console.log(arr);
     this.setState({
       currnetPawnPos: arr
-    })
+    });
+
   }
   
+
+  handleClick(num){
+    console.log(num);
+    var arr = [];
+    for(let i =0; i<this.state.currentRookPos.length; i++){
+      arr.push(num);
+    }
+    this.setState({
+      currentRookPos: arr
+    })
+  }
 
   render() {
     // console.log(this.props.num);
@@ -87,6 +95,8 @@ class Square extends Component {
     const pawnSix = this.state.currnetPawnPos[5];
     const pawnSeven = this.state.currnetPawnPos[6];
     const pawnEight = this.state.currnetPawnPos[7];
+    const rookOne = this.state.currentRookPos[0];
+    const rookTwo = this.state.currentRookPos[1];
     switch(number){
       case pawnOne:
         return( 
@@ -106,7 +116,7 @@ class Square extends Component {
             <span><Pawn pawnNum={pawnThree}/></span>
           </div>
         )
-        case pawnFour:
+      case pawnFour:
         return( 
           <div style={this.state.styles}>
             <span><Pawn pawnNum={pawnFour}/></span>
@@ -136,10 +146,12 @@ class Square extends Component {
             <span><Pawn pawnNum={pawnEight}/></span>
           </div>
         )
-      case 56:
+      case rookOne:
         return( 
           <div style={this.state.styles}>
-            <span><Rook/></span>
+            <span onClick={() => {
+              this.handleClick(rookOne)
+            }}><Rook rookNum={rookOne}/></span>
           </div>
         )
       case 57:
@@ -186,14 +198,18 @@ class Square extends Component {
         )
       default:
         return(
-          <div style={this.state.styles}>
+          <div style={this.state.styles} onClick={() => {
+            this.handleClick(this.props.num)
+          }}>
             <span></span>
           </div>
         )
     }
     return (
-      <div style={this.state.styles}>
-        <span></span>
+      <div style={this.state.styles} >
+        <span onClick={() => {
+          this.handleClick(this.props.num);
+        }}></span>
      </div>
     );
   }

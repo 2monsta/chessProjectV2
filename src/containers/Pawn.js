@@ -14,7 +14,8 @@ class Pawn extends Component {
   }
   render() {
     var styles = {
-      position: 'absolute'
+      position: 'absolute',
+      fontSize: '50px'
     }
 
     return (

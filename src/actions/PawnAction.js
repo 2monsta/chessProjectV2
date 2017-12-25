@@ -4,7 +4,7 @@ export default (num)=>{
 		48, 49, 50, 51, 52, 53, 54, 55
 	]
 	var newPos;
-	console.log(num);
+	// console.log(num);
  	for(let i =0; i< originalPos.length; i++){
 		if(num === originalPos[i]){
 			newPos = num - 16;
