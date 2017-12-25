@@ -7,10 +7,13 @@ class Rook extends Component {
   constructor(props) {
     super(props);
     this.handleMove = this.handleMove.bind(this);
+    this.state={
+      validMoves: []
+    }
   }
   handleMove()  {
     var oldPos = this.props.rookNum;
-   
+    
   }
   render() {
     var styles = {

@@ -20,7 +20,7 @@ class Square extends Component {
       currnetPawnPos:[48, 49,50, 51,52, 53, 54, 55],
       currentRookPos: [56, 63]
     }
-    this.handleClick = this.handleClick.bind(this);
+    // this.handleClick = this.handleClick.bind(this);
   }
   //TODO: update state depending on the number will cause a re render and move the
   componentDidMount() {
@@ -52,37 +52,38 @@ class Square extends Component {
   
   componentWillReceiveProps(nextProps) {
     // console.log(nextProps.newPawnPos);
-    var arr =[];
-    this.state.currnetPawnPos.map((pos, index)=>{
-      if((pos-16) === nextProps.newPawnPos || (pos - 8) ===nextProps.newPawnPos){
-        arr.push(nextProps.newPawnPos);
-      }
-      else{
-        arr.push(pos);
-      }
-    })
-    this.state.currentRookPos.map((pos, index)=>{
 
-    })
+                      // MOVES the pawn
+    // var arr =[];
+    // this.state.currnetPawnPos.map((pos, index)=>{
+    //   if((pos-16) === nextProps.newPawnPos || (pos - 8) ===nextProps.newPawnPos){
+    //     arr.push(nextProps.newPawnPos);
+    //   }
+    //   else{
+    //     arr.push(pos);
+    //   }
+    // })
 
-    // console.log(arr);
-    this.setState({
-      currnetPawnPos: arr
-    });
+    // // console.log(arr);
+    // this.setState({
+    //   currnetPawnPos: arr
+    // });
 
+
+    
   }
   
 
-  handleClick(num){
-    console.log(num);
-    var arr = [];
-    for(let i =0; i<this.state.currentRookPos.length; i++){
-      arr.push(num);
-    }
-    this.setState({
-      currentRookPos: arr
-    })
-  }
+  // handleClick(num){
+  //   console.log(num);
+  //   var arr = [];
+  //   for(let i =0; i<this.state.currentRookPos.length; i++){
+  //     arr.push(num);
+  //   }
+  //   this.setState({
+  //     currentRookPos:arr
+  //   })
+  // }
 
   render() {
     // console.log(this.props.num);
@@ -149,9 +150,11 @@ class Square extends Component {
       case rookOne:
         return( 
           <div style={this.state.styles}>
-            <span onClick={() => {
-              this.handleClick(rookOne)
-            }}><Rook rookNum={rookOne}/></span>
+            <span 
+            // onClick={() => {
+            //   this.handleClick(rookOne)
+            // }}
+            ><Rook rookNum={rookOne}/></span>
           </div>
         )
       case 57:
